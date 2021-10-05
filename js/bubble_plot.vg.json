@@ -1,0 +1,87 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json", 
+    "width": 500,
+    "height":400,
+    "title": "Melbourne Housing Price Based on Year Built",
+    "data":{
+        "url":"https://raw.githubusercontent.com/JohansenPandean21/Assignment-2-Data-Vis/main/Melbourne_Pricing_House.csv"
+    },
+    
+
+    "transform":[
+        
+        {"filter":"year(datum.YearBuilt) > 1800"}
+    ],
+
+    "encoding":{
+        "y":{
+            "field": "Price",
+            "type":"quantitative",
+            "title":"Price ($)",
+            "axis":{"tickCount" : 7},
+            "scale":{"domain":[0,10000000]}
+        },
+        "x":{
+            "field" : "YearBuilt",
+            "type":"temporal",
+            "axis":{"tickCount" : 6},
+            "scale":{"domain":[{"year":1800},{"year":2020}]}
+            
+        }
+    },
+
+    "layer":[
+        {
+            "selection":{
+                "legend_bind":{
+                    "type":"multi",
+                    "fields":["Type"],
+                    "bind": {"legend":"dblclick"}
+                }
+            },
+            "mark":"circle",
+            "encoding":{
+                "size":{
+                    "field":"Landsize",
+                    "type":"quantitative",
+                    "legend":{"format": ".1s"}
+                },
+                "color":{
+                    "field":"Type",
+                    "type":"nominal"
+                },
+                "opacity": { 
+                    "condition": {"selection": "legend_bind", "value": 0.6},
+                    "value": 0.1
+                },
+                "tooltip": [ 
+                    {"field": "Type", "type":"nominal"},
+                    {"field":"Price","type":"quantitative","format":".1s"},
+                    {"field":"YearBuilt","type":"temporal"},
+                    {"field":"Rooms","type":"quantitative","title":"Number of Rooms"},
+                    {"field":"Bathroom","type":"quantitative","title":"Number of Bathroom"}
+                ]
+            }
+        },
+        {
+            "mark":{
+                "type":"text",
+                "align":"right",
+                "baseline":"middle",
+                "dx":-12,
+                "fontSize": 11.5,
+                "fontStyle":"italic"
+            },
+            "encoding":{
+                "text":{"field":"Suburb","type":"nominal"},
+                "color":{"value":"black"},
+                "opacity":{
+                    "condition":{
+                        "test":"datum['Price'] > 7000000", "value": 1
+                    }, 
+                    "value" :0
+                }
+            }
+        }
+    ]
+}
