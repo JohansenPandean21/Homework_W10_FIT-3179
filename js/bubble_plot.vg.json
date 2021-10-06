@@ -44,8 +44,12 @@
                 "size":{
                     "field":"Landsize",
                     "type":"quantitative",
-                    "legend":{"format": ".1s"}
-                },
+                    "legend":{"format": ".1s"},
+                    "scale":{
+                        "type":"threshold",
+                        "domain":[500,1000,5000,10000,20000,30000],
+                        "range":[10,50,150,300,400,500]
+                    },
                 "color":{
                     "field":"Type",
                     "type":"nominal"
