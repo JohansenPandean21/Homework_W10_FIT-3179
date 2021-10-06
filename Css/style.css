@@ -5,8 +5,7 @@
     margin: auto;
     padding: 10px;
     padding-top: 10px;
-    font-family: 'Source Sans Pro', sans-serif;
-    background-color: rgb(166, 245, 172);
+    font-family: 'Source Sans Pro', sans-serif
 }
 
 /* Border Line */
@@ -22,9 +21,7 @@
     width : 100%;
 }
 
-body{
-    background-color : rgb(176, 230, 185);
-}
+
 
 h2{
     font-size: 20px;
