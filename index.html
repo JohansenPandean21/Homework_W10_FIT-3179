@@ -23,7 +23,7 @@
 
 <body>
     <div class="page">
-            <h1 class = "c-align" font-size : 20px> Visualisation 1</h1>
+            <h1 class = "c-align" font-size : 20px> Homework Week 10 </h1>
 
     <br>
     <h2 class = "c-align"> Melbourne Housing Price </h2>
@@ -40,10 +40,11 @@
     <hr class = "hr3">
     
     
-    <h2 class= "c-align"> Stacked Bar Chart </h2>
+    <h2 class= "c-align"> Bubble Plot Visualisation </h2>
     <div class="pure-g">
-        <div class="pure-u-1-1">
-            <div id="Stacked_bar" class="vis-container"></div>
+        <div class="c-align">
+            <div id="bubble_plot" class="vis-container"></div>
+            <p> Interaction being used in this visualisation is legend bind for Unit Types</p>
         </div>
     </div>
     
@@ -57,12 +58,9 @@
         var vega1 = "js/Empty_data_map.vg.json";
         vegaEmbed("#choropleth_map",vega1);
 
-        var vega2 = "js/line.vg.json";
-        vegaEmbed("#line_chart",vega2);
 
-
-        var vega3 = "js/Stacked_bar.vg.json";
-        vegaEmbed("#Stacked_bar",vega3);
+        var vega3 = "js/bubble_plot.vg.json";
+        vegaEmbed("#bubble_plot",vega3);
     </script>
 </body>
 </html>
