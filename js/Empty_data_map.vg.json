@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json", 
-  "title": "Melbourne Housing Price Per Room",
+  "title": "Melbourne Housing Price per Metre Square",
   "width": 500,
   "height": 600,
   "data":
@@ -32,9 +32,7 @@
                       "key": "Suburb",
                       "fields": ["Avg_Price_Land", "Month","Suburb","Distance","Type"]
                   }
-              },
-            {"filter": "datum.Distance > Dist_range"},
-            {"filter": "unit_type == null || datum.Type == unit_type"}
+              }
           ],
 
           "mark": {"type": "geoshape"},
@@ -42,7 +40,7 @@
             "color": {
               "field": "Avg_Price_Land",
               "type": "quantitative",
-              "title" : "Average Price per Room ($)",
+              "title" : "Average Price per Metre Square ($)",
               "scale" : {
                 "type" : "threshold",
                 "domain" : [1000,2000,3000,4000,5000,6000],
@@ -53,43 +51,10 @@
         
             "tooltip": [
             {"field" : "Suburb", "type":"nominal"},
-            {"field": "Avg_Price_Land", "type": "quantitative","format": "$.4s","title" : "Price Room Average in $"},
+            {"field": "Avg_Price_Land", "type": "quantitative","format": "$.4s","title" : "Land Price Average in $"},
             {"field": "Distance", "type": "quantitative","title": "Distance From CBD in Km"}
           ]
           } 
       }
-  ],
-  "params" : [
-    {
-      "name": "unit_type",
-      "bind":{
-        "input": "select",
-        "options":[
-          null,
-          "h",
-          "t",
-          "u"
-        ],
-        "labels":[
-          "Show All",
-          "House",
-          "Townhouse",
-          "Unit"
-        ],
-        "name": "Select Unit Type: "
-      }
-    },
-    {
-      "name": "Dist_range",
-      "value": 0,
-      "bind": { 
-        "input": "range",
-        "min": 0,
-        "max": 40,
-        "step": 1,
-        "name": "Minimum Distance From CBD Area (Km): "
-      }
-    }
-    
   ]
 }
